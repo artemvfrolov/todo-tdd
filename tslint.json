@@ -1,0 +1,14 @@
+{
+  "extends": "tslint-config-valorsoft",
+  "rulesDirectory": [
+    "node_modules/codelyzer"
+  ],
+  "rules": {
+    "component-selector": [true, "element", "", "kebab-case"],
+    "directive-selector": [true, "attribute", "", "camelCase"],
+    "no-import-side-effect": false,
+    "no-unsafe-any": false,
+    "ordered-imports": false,
+    "pipe-naming": [true, "camelCase", ""]
+  }
+}

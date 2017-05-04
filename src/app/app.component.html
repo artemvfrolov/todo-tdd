@@ -1,0 +1,46 @@
+
+<section class="todoapp">
+  <header class="header">
+    <h1>todos</h1>
+    <form (ngSubmit)="addTodo(todoFormAdd)" #todoFormAdd="ngForm">
+      <input class="new-todo"
+             placeholder="What needs to be done?"
+             name="todo"
+             autofocus
+             ngModel
+      >
+    </form>
+  </header>
+  <section class="main" *ngIf="todosClone.length > 0">
+    <ul class="todo-list">
+      <li *ngFor="let todo of todosClone"
+          [class.completed]="todo.completed"
+          [class.editing]="todo.editing"
+      >
+        <div class="view">
+          <div class="form"></div>
+          <form>
+            <input class="toggle"
+                   type="checkbox"
+                   (click)="toggleCompletion(todo)"
+                   [checked]="todo.completed"
+            >
+            <label>{{todo.title}}</label>
+            <button class="destroy" (click)="remove(todo)"></button>
+          </form>
+        </div>
+      </li>
+    </ul>
+  </section>
+  <footer class="footer" *ngIf="todoStore.todos.length > 0">
+    <span class="todo-count">
+      <strong>{{todoStore.getRemaining().length}}</strong>
+      {{todoStore.getRemaining().length == 1 ? 'item' : 'items'}} left
+    </span>
+    <ul class="filters">
+      <li><a href="#" (click)="filter('all')">All</a></li>
+      <li><a href="#" (click)="filter('active')">Active</a></li>
+      <li><a href="#" (click)="filter('completed')">Completed</a></li>
+    </ul>
+  </footer>
+</section>
